@@ -33,4 +33,9 @@ public class CurrencyController {
     public void controller_registerNewCurrency(@RequestBody Currency currency) {
         currencyService.registerNewCurrency(currency);
     }
+    
+    @PutMapping("/currency/{id}")
+    public ResponseEntity<Currency> controller_updateCurrency(@PathVariable Long id, @RequestBody Currency currencyDetails) {
+    	return currencyService.updateCurrency(id, currencyDetails);
+    }
 }

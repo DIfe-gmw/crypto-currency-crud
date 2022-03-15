@@ -34,4 +34,19 @@ public class CurrencyService {
         currencyRepository.save(currency);
     }
     
+    public ResponseEntity<Currency> updateCurrency(Long id, Currency currencyDetails) {
+    	Currency currency = currencyRepository.findById(id)
+    	.orElseThrow(() -> 
+        	new ResourceNotFoundException("Currency does not exist with id:" + id)
+        );
+    	
+    	currency.setName(currencyDetails.getName());
+    	currency.setDescription(currencyDetails.getDescription());
+    	currency.setValue(currencyDetails.getValue());
+    	currency.setActive(currencyDetails.isActive());
+    	
+    	Currency updatedCurrency = currencyRepository.save(currency);
+    	
+    	return ResponseEntity.ok(updatedCurrency);
+    }
 }
