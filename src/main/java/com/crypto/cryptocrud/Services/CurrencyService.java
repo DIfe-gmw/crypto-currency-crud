@@ -1,6 +1,9 @@
 package com.crypto.cryptocrud.Services;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.crypto.cryptocrud.Models.Currency;
 import com.crypto.cryptocrud.Repositories.CurrencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +51,16 @@ public class CurrencyService {
     	Currency updatedCurrency = currencyRepository.save(currency);
     	
     	return ResponseEntity.ok(updatedCurrency);
+    }
+    
+    public ResponseEntity<Map<String, Boolean>> deleteCurrency(Long id) {
+    	Currency currency = currencyRepository.findById(id)
+    	.orElseThrow(() -> 
+             new ResourceNotFoundException("Currency does not exist with id:" + id)
+        );
+    	currencyRepository.delete(currency);
+    	Map<String, Boolean> response = new HashMap<>();
+    	response.put("deleted", Boolean.TRUE);
+    	return ResponseEntity.ok(response);
     }
 }

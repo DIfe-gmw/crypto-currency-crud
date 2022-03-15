@@ -1,6 +1,8 @@
 package com.crypto.cryptocrud.Controllers;
 
 import java.util.List;
+import java.util.Map;
+
 import com.crypto.cryptocrud.Models.Currency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +39,10 @@ public class CurrencyController {
     @PutMapping("/currency/{id}")
     public ResponseEntity<Currency> controller_updateCurrency(@PathVariable Long id, @RequestBody Currency currencyDetails) {
     	return currencyService.updateCurrency(id, currencyDetails);
+    }
+    
+    @DeleteMapping("/currency/{id}")
+    public ResponseEntity<Map<String,Boolean>> controller_deleteCurrency(@PathVariable Long id) {
+    	return currencyService.deleteCurrency(id);
     }
 }
