@@ -5,6 +5,7 @@ import com.crypto.cryptocrud.Models.Currency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.crypto.cryptocrud.Services.CurrencyService;
+import org.springframework.http.ResponseEntity;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -23,6 +24,11 @@ public class CurrencyController {
         return currencyService.getAllCurrency();
     }
 
+    @GetMapping("/currency/{id}")
+    public ResponseEntity<Currency> controller_getCurrencyById(@PathVariable Long id) {
+    	return currencyService.getCurrencyById(id);
+    }
+    
     @PostMapping("/currency")
     public void controller_registerNewCurrency(@RequestBody Currency currency) {
         currencyService.registerNewCurrency(currency);

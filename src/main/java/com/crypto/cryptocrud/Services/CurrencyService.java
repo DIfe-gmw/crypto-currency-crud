@@ -3,9 +3,10 @@ package com.crypto.cryptocrud.Services;
 import java.util.List;
 import com.crypto.cryptocrud.Models.Currency;
 import com.crypto.cryptocrud.Repositories.CurrencyRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.crypto.cryptocrud.Exceptions.ResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 
 @Service
 public class CurrencyService {
@@ -21,7 +22,16 @@ public class CurrencyService {
         return currencyRepository.findAll();
     }
 
+    public ResponseEntity<Currency> getCurrencyById(Long id) {
+    	Currency currency = currencyRepository.findById(id)
+    	.orElseThrow(() -> 
+    		new ResourceNotFoundException("Currency does not exist with id:" + id)
+    	);
+    	return ResponseEntity.ok(currency);
+    }
+    
     public void registerNewCurrency(Currency currency) {
         currencyRepository.save(currency);
     }
+    
 }

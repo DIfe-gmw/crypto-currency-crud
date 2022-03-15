@@ -23,8 +23,8 @@ public class Currency {
     @Column(name = "value")
     private BigDecimal value;
 
-    @Column(name = "status")
-    private char status;
+    @Column(name = "active")
+    private boolean active;
     
     @CreationTimestamp
     @Column(name = "createdAt", updatable = false)
@@ -34,7 +34,7 @@ public class Currency {
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
-    public long getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -66,12 +66,12 @@ public class Currency {
 		this.value = value;
 	}
 
-	public char getStatus() {
-		return status;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setStatus(char status) {
-		this.status = status;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public LocalDateTime getCreatedAt() {
@@ -88,13 +88,12 @@ public class Currency {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
-		
-		
 	}
 
 	@Override
 	public String toString() {
 		return "Currency [id=" + id + ", name=" + name + ", description=" + description + ", value=" + value
-				+ ", status=" + status + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+				+ ", active=" + active + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
+
 }
