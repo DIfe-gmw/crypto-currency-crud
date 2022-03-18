@@ -1,6 +1,7 @@
 com/crypto/cryptocrud/Models/Currency.class
 com/crypto/cryptocrud/Repositories/CurrencyRepository.class
 com/crypto/cryptocrud/App.class
-com/crypto/cryptocrud/Services/CurrencyService.class
 com/crypto/cryptocrud/Controllers/CurrencyController.class
+com/crypto/cryptocrud/Services/CurrencyService.class
+com/crypto/cryptocrud/Exceptions/ResourceAlreadyTaken.class
 com/crypto/cryptocrud/Exceptions/ResourceNotFoundException.class

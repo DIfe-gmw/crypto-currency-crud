@@ -3,11 +3,14 @@ package com.crypto.cryptocrud.Services;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import com.crypto.cryptocrud.Models.Currency;
 import com.crypto.cryptocrud.Repositories.CurrencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.crypto.cryptocrud.Exceptions.ResourceAlreadyTaken;
 import com.crypto.cryptocrud.Exceptions.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 
@@ -34,7 +37,11 @@ public class CurrencyService {
     }
     
     public void registerNewCurrency(Currency currency) {
-        currencyRepository.save(currency);
+    	Optional<Currency> currencyOptional = currencyRepository.findCurrencyByName(currency.getName());
+    	if(currencyOptional.isPresent()) {
+    		throw new ResourceAlreadyTaken("Nome duplicado");
+    	}
+    	currencyRepository.save(currency);
     }
     
     public ResponseEntity<Currency> updateCurrency(Long id, Currency currencyDetails) {
