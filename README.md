@@ -21,7 +21,6 @@ Entre na pasta target, lá você deve ver um arquivo com extensão .jar, para ex
 
 > java -jar cryptocrud-1.0.jar
 
-# 
 ## Dependencies
 
 > Maven 3.8\
