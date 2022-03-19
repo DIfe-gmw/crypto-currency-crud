@@ -4,7 +4,7 @@
 
 > Maven 3.8\
 > Java 11\
-> OpenJDK 11
+> OpenJDK 11\
 > MariaDB 10
 
 ## Como rodar o Back-End
