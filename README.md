@@ -27,7 +27,9 @@ Entre na pasta target, lá você deve ver um arquivo com extensão .jar, para ex
 
 > Maven 3.8\
 > Java 11\
-> OpenJDK 11
+> OpenJDK 11\
+> MariaDB 10
+
 ## How to run the Back-end
 
 Clone the repository
